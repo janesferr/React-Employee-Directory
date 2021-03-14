@@ -1,9 +1,8 @@
-import React from "react";
+// import React from "react";
 import "./FriendCard.css";
-import Table from 'react-bootstrap/Table'
+
 
 const FriendCard = props => (
-
   
     <tr>
        <td>{props.id}</td>
@@ -12,8 +11,11 @@ const FriendCard = props => (
       <td>{props.phone}</td>
       <td> <img alt={props.name} src={props.image} /> </td>
     </tr>
-  
-
+     
 );
+
+
+ 
+
 
 export default FriendCard;
