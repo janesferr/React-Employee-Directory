@@ -7,6 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -73,8 +74,13 @@ class App extends Component {
       
       <div>
         <Header />
-       
-        <select
+        <div>
+         
+          <Table striped bordered hover variant="light" >
+            <thead>
+              <tr>
+                <th>#</th>
+                <th> Name <select
           name="alphabetical"
           value={this.state.alphabetical}
           onChange={this.handleChange}
@@ -84,13 +90,7 @@ class App extends Component {
           </option>
           <option value="za">Z to A</option>
         </select>
-        <div>
-         
-          <Table striped bordered hover variant="light" >
-            <thead>
-              <tr>
-                <th>#</th>
-                <th> Name </th>
+        </th>
                 <th>Email</th>
                 <th>Phone</th>
                 <th>Picture</th>

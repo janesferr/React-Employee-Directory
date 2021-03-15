@@ -1,8 +1,9 @@
-import React from 'react';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from 'react-bootstrap/Navbar';
-import {  Nav, Form, Button, FormControl } from 'react-bootstrap';
-// import Search from 'react-search';
+import {  Nav, Form, Button} from 'react-bootstrap';
+import context from 'react-bootstrap/esm/AccordionContext';
+
 
 const mystyle = {
   color: "white",
@@ -21,18 +22,23 @@ const mystyle = {
     <Nav className="mr-auto">
       <h1 style={mystyle}>Employee Directory</h1>
     </Nav>
-    <Form inline>
-      <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-      <Button variant="outline-light">Search</Button>
-   
-      {/* <Search items={items} />
- 
-        <Search items={items}
-                placeholder=''
-                maxSelected={3}
-                multiple={true}
-                onItemsChanged={this.HiItems.bind(this)} /> */}
-    </Form>
+    
+   <div className="searchbox">
+     <Form inline>
+       <input
+       className="form-control mr-sm-2"
+       type="search"
+       placeholder="Search"
+       aria-label="Search"
+       onChange={e =>context.handleSearchChange(e)}
+       />
+        <Button type="submit" variant="outline-light">Search</Button> 
+
+
+     </Form>
+   </div>
+     
+    
   </Navbar>
 
   
