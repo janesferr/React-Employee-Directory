@@ -1,8 +1,11 @@
-import Title from "./components/Title";
+
 import FriendCard from './components/FriendCard';
 import Table from 'react-bootstrap/Table'
 import React, { Component } from "react";
-// import axios from "axios";
+import Header from "./components/Header";
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+
 
 class App extends Component {
   constructor(props) {
@@ -67,19 +70,10 @@ class App extends Component {
         image={u.picture.medium} />;
     });
     return (
+      
       <div>
-        <form onSubmit={this.handleSubmit}>
-          <label>
-            Search for user:
-            <input
-              type="text"
-              name="searchTerm"
-              value={this.state.searchTerm}
-              onChange={this.handleChange}
-            />
-          </label>
-          <input type="submit" value="Submit" />
-        </form>
+        <Header />
+       
         <select
           name="alphabetical"
           value={this.state.alphabetical}
@@ -91,7 +85,7 @@ class App extends Component {
           <option value="za">Z to A</option>
         </select>
         <div>
-          <Title> Employee Directory</Title>
+         
           <Table striped bordered hover variant="light" >
             <thead>
               <tr>
@@ -106,6 +100,7 @@ class App extends Component {
             <tbody>
             
               {list}
+              {userNames}
 
             </tbody>
           </Table>
