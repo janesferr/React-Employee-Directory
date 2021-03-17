@@ -5,19 +5,18 @@ import React, { Component } from "react";
 import Header from "./components/Header";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-
-
-
 class App extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { users: [], searchTerm: '', alphabetical: 'az' };
+    this.state = { users: [], search: "", alphabetical: 'az' };
 
     this.handleChange = this.handleChange.bind(this);
+    this.handleSearchChange = this.handleSearchChange.bind(this);
   }
 
   componentDidMount() {
+    
     fetch('https://randomuser.me/api/?results=50')
       .then(response => {
         if (response.ok) return response.json();
@@ -31,9 +30,33 @@ class App extends Component {
       });
   }
 
-  render() {
+  renderDirectoryList() {
+    let users;
+    if (this.state.searchTerm && this.state.searchTerm.trim() !== '') {
+      users = this.state.users.filter( u => { 
+        let name = `${u.name.first} ${u.name.last}`;
+        return name.startsWith(this.state.searchTerm.trim())
+      });
+    }
+    else {
+      users = this.state.users;
+    }
 
-    const list = this.state.users.map((u, i) => (
+    if (this.state.alphabetical === "az") {
+      users.sort((a, b) => {
+        if (a.name.first === b.name.first)
+          return 0;
+        return a.name.first < b.name.first ? -1 : 1
+      });
+    } else {
+      users.sort((a, b) => {
+        if (a.name.first === b.name.first)
+          return 0;
+        return a.name.first < b.name.first ? 1 : -1
+      });
+    }
+
+    let list = users.map((u, i) => (
       <FriendCard
         key={u.login.md5}
         id={i + 1}
@@ -43,91 +66,58 @@ class App extends Component {
         image={u.picture.medium}
       />
     ));
-    let sortedUsers;
 
-    if (this.state.alphabetical === "az") {
-      console.log("sort");
-      sortedUsers = this.state.users.sort((a, b) =>
-        a.name.first < b.name.first ? 1 : -1
-      );
-    } else {
-      sortedUsers = this.state.users.sort((a, b) =>
-        a.name.first > b.name.first ? 1 : -1
-      
-      );
-    }
+    return list;
+  }
 
-    let filteredUsers = sortedUsers;
-
-    if (this.state.searchTerm)
-      filteredUsers = this.state.users.filter(u =>
-        u.name.first.startsWith(this.state.searchTerm)
-      );
-
-    const userNames = filteredUsers.map((u, i) => {
-      return <div key={u.login.md5} id={i + 1} name={`${u.name.first} ${u.name.last}`}
-        email={u.email}
-        phone={u.phone}
-        image={u.picture.medium} />;
-    });
+  render() {
+    let list = this.renderDirectoryList();
     return (
-      
       <div>
-        <Header />
+        <Header handleSearchChange={this.handleSearchChange} />
         <div>
-         
           <Table striped bordered hover variant="light" >
             <thead>
               <tr>
                 <th>#</th>
                 <th> Name <select
-          name="alphabetical"
-          value={this.state.alphabetical}
-          onChange={this.handleChange}
-        >
-          <option selected value="az">
-            A to Z
-          </option>
-          <option value="za">Z to A</option>
-        </select>
-        </th>
+                  name="alphabetical"
+                  value={this.state.alphabetical}
+                  onChange={this.handleChange}
+                >
+                  <option value="az" defaultValue>A to Z</option>
+                  <option value="za">Z to A</option>
+                </select>
+                </th>
                 <th>Email</th>
                 <th>Phone</th>
                 <th>Picture</th>
               </tr>
-
             </thead>
             <tbody>
-            
               {list}
-              {userNames}
-
             </tbody>
           </Table>
         </div>
-
       </div>
-     
-       
     );
   }
 
-  handleChange(event) {
-    const target = event.target;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
-    const name = target.name;
+  handleSearchChange(event) {
+    const { name, value } = event.target;
 
     this.setState({
       [name]: value
     });
   }
 
+  handleChange(event) {
+    const { name, value } = event.target;
+
+    this.setState({
+      [name]: value
+    });
+  }
 }
 
-
-
-
 export default App;
-
-
-

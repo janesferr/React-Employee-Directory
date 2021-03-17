@@ -1,9 +1,7 @@
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from 'react-bootstrap/Navbar';
-import {  Nav, Form, Button} from 'react-bootstrap';
-import context from 'react-bootstrap/esm/AccordionContext';
-
+import { Nav, Form } from 'react-bootstrap';
 
 const mystyle = {
   color: "white",
@@ -13,36 +11,27 @@ const mystyle = {
   textAlign: 'center',
 };
 
- function Header() {
+function Header(props) {
     return (
         <>
-  
- 
-  <Navbar bg="primary" variant="dark">
-    <Nav className="mr-auto">
-      <h1 style={mystyle}>Employee Directory</h1>
-    </Nav>
-    
-   <div className="searchbox">
-     <Form inline>
-       <input
-       className="form-control mr-sm-2"
-       type="search"
-       placeholder="Search"
-       aria-label="Search"
-       onChange={e =>context.handleSearchChange(e)}
-       />
-        <Button type="submit" variant="outline-light">Search</Button> 
-
-
-     </Form>
-   </div>
-     
-    
-  </Navbar>
-
-  
-</>
+        <Navbar bg="primary" variant="dark">
+          <Nav className="mr-auto">
+            <h1 style={mystyle}>Employee Directory</h1>
+          </Nav>
+          
+        <div className="searchbox">
+          <Form inline>
+            <input name="searchTerm"
+                   className="form-control mr-sm-2"
+                   type="search"
+                   placeholder="Search"
+                   aria-label="Search"
+                   onChange={props.handleSearchChange}
+            />
+          </Form>
+        </div>
+        </Navbar>
+        </>
     )
 }
 
