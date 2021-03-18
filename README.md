@@ -1,4 +1,18 @@
-# Getting Started with Create React App
+
+# Employee Directory
+
+This project creates an employee directory with React.  With React, the UI is broken into components, manage components state, and respond to user events. If a user wants to be able to view the entire employee directory at once so that he or she can have a quick access to their information.  An employee or manager would benefit greatly from being able to view non-sensitive data about other employees. It would be particularly helpful to be able to filter employees by name.Given a table of random users generated from the [Random User API](https://randomuser.me/), when the user loads the page, a table of employees should render. 
+
+The user should be able to:
+
+  * Sort the table by at least one category
+
+  * Filter the users by at least one property.
+
+This website has been deployed with github pages: 
+https://janesferr.github.io/React-Employee-Directory/
+
+## This project uses React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
