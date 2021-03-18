@@ -1,6 +1,5 @@
 
 import FriendCard from './components/FriendCard';
-import Table from 'react-bootstrap/Table'
 import React, { Component } from "react";
 import Header from "./components/Header";
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -73,10 +72,10 @@ class App extends Component {
   render() {
     let list = this.renderDirectoryList();
     return (
-      <div>
+     <>
         <Header handleSearchChange={this.handleSearchChange} />
-        <div>
-          <Table striped bordered hover variant="light" >
+        <div className="container">
+          <table >
             <thead>
               <tr>
                 <th>#</th>
@@ -97,9 +96,9 @@ class App extends Component {
             <tbody>
               {list}
             </tbody>
-          </Table>
+          </table>
         </div>
-      </div>
+     </>
     );
   }
 

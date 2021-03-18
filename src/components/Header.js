@@ -1,22 +1,20 @@
 
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from 'react-bootstrap/Navbar';
 import { Nav, Form } from 'react-bootstrap';
 
 const mystyle = {
-  color: "white",
-  backgroundColor: "DodgerBlue",
-  padding: "10px",
-  fontFamily: "Arial",
-  textAlign: 'center',
+   color: "white",
+  textAlign: "center"
+
 };
 
 function Header(props) {
     return (
         <>
-        <Navbar bg="primary" variant="dark">
-          <Nav className="mr-auto">
-            <h1 style={mystyle}>Employee Directory</h1>
+        <Navbar style={mystyle}>
+          <Nav>
+            <h1>Employee Directory</h1>
           </Nav>
           
         <div className="searchbox">
