@@ -34,12 +34,14 @@ class App extends Component {
     if (this.state.searchTerm && this.state.searchTerm.trim() !== '') {
       users = this.state.users.filter( u => { 
         let name = `${u.name.first} ${u.name.last}`;
-        return name.startsWith(this.state.searchTerm.trim())
+        return name.startsWith(this.state.searchTerm.trim() || this.state.searchTerm.toLowerCase())
       });
     }
-    else {
+    else
+    {
       users = this.state.users;
     }
+   
 
     if (this.state.alphabetical === "az") {
       users.sort((a, b) => {
