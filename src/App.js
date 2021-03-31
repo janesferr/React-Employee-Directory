@@ -34,7 +34,7 @@ class App extends Component {
     if (this.state.searchTerm && this.state.searchTerm.trim() !== '') {
       users = this.state.users.filter( u => { 
         let name = `${u.name.first} ${u.name.last}`;
-        return name.startsWith(this.state.searchTerm.trim() || this.state.searchTerm.toLowerCase())
+        return name.toLowerCase().startsWith(this.state.searchTerm.trim().toLowerCase() || this.state.searchTerm.toLowerCase())
       });
     }
     else
