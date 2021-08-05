@@ -3,7 +3,8 @@ import "./FriendCard.css";
 
 
 const FriendCard = props => (
-  
+ 
+
     <tr>
        <td>{props.id}</td>
       <td>{props.name}</td>
@@ -11,6 +12,7 @@ const FriendCard = props => (
       <td>{props.phone}</td>
       <td> <img alt={props.name} src={props.image} /> </td>
     </tr>
+  
      
 );
 

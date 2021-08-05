@@ -1,34 +1,41 @@
 
-// import 'bootstrap/dist/css/bootstrap.min.css';
+
 import Navbar from 'react-bootstrap/Navbar';
-import { Nav, Form } from 'react-bootstrap';
+
+import './Header.css';
 
 const mystyle = {
    color: "white",
-  textAlign: "center"
-
+  textAlign: "center",
+  
 };
 
 function Header(props) {
     return (
         <>
         <Navbar style={mystyle}>
-          <Nav>
-            <h1>Employee Directory</h1>
-          </Nav>
           
-        <div className="searchbox">
-          <Form inline>
+            <div className ="tron">
+            <h1>Employee Directory</h1>
+            </div>
+            
+         
+            </Navbar>
+         
+          <div className="searchbox">
             <input name="searchTerm"
-                   className="form-control mr-sm-2"
+                   class="form-control form-control-lg"
                    type="search"
                    placeholder="Search"
                    aria-label="Search"
                    onChange={props.handleSearchChange}
             />
-          </Form>
-        </div>
-        </Navbar>
+          
+
+            </div>
+        
+       
+       
         </>
     )
 }

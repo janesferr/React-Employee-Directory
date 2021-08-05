@@ -1,8 +1,9 @@
 html,
 body {
-	margin: 0;
+	margin: 10%;
   color: white;
-	background: linear-gradient(45deg, #49a09d, #5f2c82);
+	background: linear-gradient(45deg, rgb(160, 73, 157), #5f2c82);
+	
 	font-family: sans-serif;
 	font-weight: 100;
 }
@@ -10,6 +11,13 @@ table {
 	width: 800px;
 	border-collapse: collapse;
 	overflow: hidden;
-	box-shadow: 0 0 20px rgba(0,0,0,0.1);
+	box-shadow: 0 0 20px rgb(160, 73, 157);
   color: white;
+}
+.tron{
+	
+	background-color: #5f2c82;
+}
+h1{
+	text-align: center;
 }
